@@ -29,6 +29,11 @@ class ProductActivity : AppCompatActivity() {
         binding = ActivityProductBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        bindView()
+        setupSharedPreferences()
+        fabAddNotes = binding.fabAddNotes
+        fabAddNotes.setOnClickListener { setupDialogBox() }
+    }
 
         fun setupDialogBox() {
             val view = LayoutInflater.from(this).inflate(R.layout.add_notes_dialog_layaut,null)
@@ -36,34 +41,34 @@ class ProductActivity : AppCompatActivity() {
             val editTextDescription = view.findViewById<EditText>(R.id.editTextdescription)
             val buttonSubmit = view.findViewById<Button>(R.id.buttonSubmit)
             val dialog = AlertDialog.Builder(this@ProductActivity)
+
+
                 .setView(view)
                 .setCancelable(false)
                 .create()
-            buttonSubmit.setOnClickListener(object : View.OnClickListener {
-                override fun onClick(p0: View?) {
-                    val title = editTextTitle.text.toString()
-                    val description = editTextDescription.text.toString()
-                    if (title.isNotEmpty() && description.isNotEmpty()) {
-                        val notes = Notes(title,description)
-                        notesList.add(notes)
-                    } else {
-                        Toast.makeText(
-                            this@ProductActivity,
-                            "Title or Description can't be empty",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    SetupRecyclerView()
-                    dialog.hide()
-                }
 
-            })
+
+            buttonSubmit.setOnClickListener {
+                val title = editTextTitle.text.toString()
+                val description = editTextDescription.text.toString()
+                if (title.isNotEmpty() && description.isNotEmpty()) {
+                    val notes = Notes(title, description)
+                    notesList.add(notes)
+                } else {
+                    Toast.makeText(
+                        this@ProductActivity,
+                        "Title or Description can't be empty",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                SetupRecyclerView()
+                dialog.hide()
+            }
             dialog.show()
         }
-        fabAddNotes.setOnClickListener { setupDialogBox() }
 
 
-    }
+
 
     private fun SetupRecyclerView() {
         val itemClickListener = object : ItemClickListener {
@@ -79,7 +84,20 @@ class ProductActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation= RecyclerView.VERTICAL
         recyclerViewNotes.layoutManager = linearLayoutManager
-        recyclerViewNotes.adapter = notesAdapter    }
+        recyclerViewNotes.adapter = notesAdapter
+    }
+
+
+    private fun setupSharedPreferences() {
+        sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE)
+    }
+    private fun bindView() {
+
+        fabAddNotes =  binding.fabAddNotes
+        recyclerViewNotes =  binding.recyclerViewNotes
+
+    }
+
+
 }
 
-data class Notes (val title:String,val description: String)
