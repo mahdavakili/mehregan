@@ -4,5 +4,10 @@
     <string name="order_List">لیست سفارش</string>
     <string name="order_tracking">پیگیری سفارش</string>
     <string name="reporting">گزارش گیری</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+
 
 </resources>
