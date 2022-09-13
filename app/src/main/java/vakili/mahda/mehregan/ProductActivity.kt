@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,55 +19,68 @@ import vakili.mahda.mehregan.databinding.ActivityMainBinding
 import vakili.mahda.mehregan.databinding.ActivityProductBinding
 
 class ProductActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityProductBinding
+
+    private lateinit var navController: NavController
+    private lateinit var navHostFragment: NavHostFragment
+
+
+   //
     lateinit var fabAddNotes: FloatingActionButton
     lateinit var sharedPreferences: SharedPreferences
     lateinit var recyclerViewNotes: RecyclerView
     var notesList = ArrayList<Notes>()
-
+//
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        bindView()
+
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentProductContainerView) as NavHostFragment
+        navController = navHostFragment.navController
+
+
+
+       //
         setupSharedPreferences()
-        fabAddNotes = binding.fabAddNotes
-        fabAddNotes.setOnClickListener { setupDialogBox() }
+
+       // fabAddNotes.setOnClickListener { setupDialogBox() }
     }
 
-        fun setupDialogBox() {
-            val view = LayoutInflater.from(this).inflate(R.layout.add_notes_dialog_layaut,null)
-            val editTextTitle = view.findViewById<EditText>(R.id.editTextTitel)
-            val editTextDescription = view.findViewById<EditText>(R.id.editTextdescription)
-            val buttonSubmit = view.findViewById<Button>(R.id.buttonSubmit)
-            val dialog = AlertDialog.Builder(this@ProductActivity)
-
-
-                .setView(view)
-                .setCancelable(false)
-                .create()
-
-
-            buttonSubmit.setOnClickListener {
-                val title = editTextTitle.text.toString()
-                val description = editTextDescription.text.toString()
-                if (title.isNotEmpty() && description.isNotEmpty()) {
-                    val notes = Notes(title, description)
-                    notesList.add(notes)
-                } else {
-                    Toast.makeText(
-                        this@ProductActivity,
-                        "Title or Description can't be empty",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                SetupRecyclerView()
-                dialog.hide()
-            }
-            dialog.show()
-        }
+//        fun setupDialogBox() {
+//            val view = LayoutInflater.from(this).inflate(R.layout.add_notes_dialog_layaut,null)
+//            val editTextTitle = view.findViewById<EditText>(R.id.editTextTitel)
+//            val editTextDescription = view.findViewById<EditText>(R.id.editTextdescription)
+//            val buttonSubmit = view.findViewById<Button>(R.id.buttonSubmit)
+//            val dialog = AlertDialog.Builder(this@ProductActivity)
+//
+//
+//                .setView(view)
+//                .setCancelable(false)
+//                .create()
+//
+//
+//            buttonSubmit.setOnClickListener {
+//                val title = editTextTitle.text.toString()
+//                val description = editTextDescription.text.toString()
+//                if (title.isNotEmpty() && description.isNotEmpty()) {
+//                    val notes = Notes(title, description)
+//                    notesList.add(notes)
+//                } else {
+//                    Toast.makeText(
+//                        this@ProductActivity,
+//                        "Title or Description can't be empty",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                }
+//                SetupRecyclerView()
+//                dialog.hide()
+//            }
+//            dialog.show()
+//        }
 
 
 
@@ -91,13 +106,8 @@ class ProductActivity : AppCompatActivity() {
     private fun setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE)
     }
-    private fun bindView() {
-
-        fabAddNotes =  binding.fabAddNotes
-        recyclerViewNotes =  binding.recyclerViewNotes
-
-    }
 
 
+//
 }
 

@@ -4,10 +4,13 @@
     <string name="order_List">لیست سفارش</string>
     <string name="order_tracking">پیگیری سفارش</string>
     <string name="reporting">گزارش گیری</string>
-    <string name="add_notes">Add Notes</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
-    <string name="submit">Submit</string>
+    <string name="add_product">محصول جدید</string>
+    <string name="name">نام محصول</string>
+    <string name="main_product_no_product_records">محصولی جهت نمایش وجود ندارد</string>
+    <string name="numberinthebox">تعداد در کارتن</string>
+    <string name="price">قیمت</string>
+    <string name="submit">ارسال</string>
+
 
 
 </resources>
