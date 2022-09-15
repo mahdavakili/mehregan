@@ -45,7 +45,7 @@ class ProductActivity : AppCompatActivity() {
 
 
        //
-        setupSharedPreferences()
+      //  setupSharedPreferences()
 
        // fabAddNotes.setOnClickListener { setupDialogBox() }
     }
@@ -85,27 +85,27 @@ class ProductActivity : AppCompatActivity() {
 
 
 
-    private fun SetupRecyclerView() {
-        val itemClickListener = object : ItemClickListener {
-            override fun onClick(notes: Notes) {
-                val intent = Intent(this@ProductActivity , DetailActivity::class.java)
-                intent.putExtra(AppConstant.TITLE,notes.title)
-                intent.putExtra(AppConstant.DESCRIPTION,notes.description)
-                startActivity(intent)
-            }
-
-        }
-        val notesAdapter = NotesAdapter(notesList, itemClickListener)
-        val linearLayoutManager = LinearLayoutManager(this)
-        linearLayoutManager.orientation= RecyclerView.VERTICAL
-        recyclerViewNotes.layoutManager = linearLayoutManager
-        recyclerViewNotes.adapter = notesAdapter
-    }
-
-
-    private fun setupSharedPreferences() {
-        sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE)
-    }
+//    private fun SetupRecyclerView() {
+//        val itemClickListener = object : ItemClickListener {
+//            override fun onClick(notes: Notes) {
+//                val intent = Intent(this@ProductActivity , DetailActivity::class.java)
+//                intent.putExtra(AppConstant.TITLE,notes.title)
+//                intent.putExtra(AppConstant.DESCRIPTION,notes.description)
+//                startActivity(intent)
+//            }
+//
+//        }
+//        val notesAdapter = NotesAdapter(notesList, itemClickListener)
+//        val linearLayoutManager = LinearLayoutManager(this)
+//        linearLayoutManager.orientation= RecyclerView.VERTICAL
+//        recyclerViewNotes.layoutManager = linearLayoutManager
+//        recyclerViewNotes.adapter = notesAdapter
+//    }
+//
+//
+//    private fun setupSharedPreferences() {
+//        sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE)
+//    }
 
 
 //

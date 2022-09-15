@@ -34,16 +34,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="clip_vertical"
         android:layout_marginStart="8dp"
+        android:inputType="number"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/numberinthebox" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/editTextPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="clip_vertical"
         android:layout_marginStart="8dp"
+        android:inputType="number"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/price" />

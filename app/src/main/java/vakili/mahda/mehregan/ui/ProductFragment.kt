@@ -29,8 +29,8 @@ class ProductFragment : Fragment() {
         }
 
           binding.floatingActionButton.setOnClickListener {
-    Navigation.findNavController(view).navigate(R.id.action_productFragment_to_addProductFragment)
-}
+             Navigation.findNavController(view).navigate(R.id.action_productFragment_to_addProductFragment)
+                  }
         return view
     }
     override fun onDestroyView() {

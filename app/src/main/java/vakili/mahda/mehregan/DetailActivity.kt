@@ -22,14 +22,14 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setIntentData() {
         val intent = intent
-        val title = intent.getStringExtra(AppConstant.TITLE)
-        val description = intent.getStringExtra(AppConstant.DESCRIPTION)
+        val title = intent.getStringExtra(AppConstant.NAME)
+        val description = intent.getStringExtra(AppConstant.NUMBER_IN_THE_BOX)
         textViewTitle1.text = title
         textViewDescription1.text = description
     }
 
     private fun bindViews() {
 
-        textViewTitle1 = binding.textViewTitle
-        textViewDescription1 = binding.textViewDescription
+        textViewTitle1 = binding.textViewName
+        textViewDescription1 = binding.textViewNumberinthebox
     }}
